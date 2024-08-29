@@ -1,0 +1,2 @@
+hetzner_cloud_token = "EYEVivuW0MsoTAZOW6ZUeNWPwSTNvGNIVt5eklapIrsTNoH3omgT4w8ysvZaDiWY"
+hetzner_ssh_key_id = "sam-personal-laptop"

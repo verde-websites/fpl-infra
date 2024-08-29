@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+ name: riley
+ namespace: clients
+ annotations:
+   cert-manager.io/cluster-issuer: "ca-issuer"
+spec:
+ tls:
+   - hosts:
+       - staging.rileydineen.com
+     secretName: tls-riley-ingress-dns
+ rules:
+   - host: staging.rileydineen.com
+     http:
+       paths:
+         - path: /
+           pathType: Prefix
+           backend:
+             service:
+               name: riley
+               port:
+                 name: web

@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: riley
+  namespace: clients
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: riley
+  template:
+    metadata:
+      labels:
+        app: riley
+    spec:
+      containers:
+        - name: riley-application
+          image: ghcr.io/atlanticsites/riley:latest
+          ports:
+            - name: web
+              containerPort: 3000
+      imagePullSecrets:
+        - name: ghcr-creds
