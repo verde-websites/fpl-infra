@@ -6,28 +6,28 @@ provider "hcloud" {
 }
 
 provider "kubectl" {
-  alias                  = "us-east"
-  host                   = module.us-east-cluster.kubeconfig_data.host
-  client_certificate     = module.us-east-cluster.kubeconfig_data.client_certificate
-  client_key             = module.us-east-cluster.kubeconfig_data.client_key
-  cluster_ca_certificate = module.us-east-cluster.kubeconfig_data.cluster_ca_certificate
+  alias                  = "eu-central"
+  host                   = module.eu-central-cluster.kubeconfig_data.host
+  client_certificate     = module.eu-central-cluster.kubeconfig_data.client_certificate
+  client_key             = module.eu-central-cluster.kubeconfig_data.client_key
+  cluster_ca_certificate = module.eu-central-cluster.kubeconfig_data.cluster_ca_certificate
 }
 
 provider "kubernetes" {
-  alias                  = "us-east"
-  host                   = module.us-east-cluster.kubeconfig_data.host
-  client_certificate     = module.us-east-cluster.kubeconfig_data.client_certificate
-  client_key             = module.us-east-cluster.kubeconfig_data.client_key
-  cluster_ca_certificate = module.us-east-cluster.kubeconfig_data.cluster_ca_certificate
+  alias                  = "eu-central"
+  host                   = module.eu-central-cluster.kubeconfig_data.host
+  client_certificate     = module.eu-central-cluster.kubeconfig_data.client_certificate
+  client_key             = module.eu-central-cluster.kubeconfig_data.client_key
+  cluster_ca_certificate = module.eu-central-cluster.kubeconfig_data.cluster_ca_certificate
 }
 
 provider "helm" {
-  alias = "us-east"
+  alias = "eu-central"
   kubernetes {
-    host                   = module.us-east-cluster.kubeconfig_data.host
-    client_certificate     = module.us-east-cluster.kubeconfig_data.client_certificate
-    client_key             = module.us-east-cluster.kubeconfig_data.client_key
-    cluster_ca_certificate = module.us-east-cluster.kubeconfig_data.cluster_ca_certificate
+    host                   = module.eu-central-cluster.kubeconfig_data.host
+    client_certificate     = module.eu-central-cluster.kubeconfig_data.client_certificate
+    client_key             = module.eu-central-cluster.kubeconfig_data.client_key
+    cluster_ca_certificate = module.eu-central-cluster.kubeconfig_data.cluster_ca_certificate
   }
 }
 
@@ -65,28 +65,23 @@ module "eu-central-cluster" {
       name        = "fsn1-agent",
       server_type = "cx32",
       location    = "fsn1",
-      count       = 2 # no agents
+      count       = 0 # no agents
     },
   ]
 }
 
 /* -------------------------------- bootstrap ------------------------------- */
 
-#module "us-east-bootstrap" {
-#  source = "../../modules/k8s/bootstrap"
-#
-#  providers = {
-#    kubectl    = kubectl.us-east
-#    kubernetes = kubernetes.us-east
-#    helm       = helm.us-east
-#  }
-#
-#  # secrets
-#  infisical_client_id     = var.infisical_client_id
-#  infisical_client_secret = var.infisical_client_secret
-#  infisical_project_id    = var.infisical_project_id
-#
-#  environment    = local.environment
-#  network_region = "us-east"
-#  cluster_name   = module.us-east-cluster.kubeconfig_data.cluster_name
-#}
+module "eu-central-bootstrap" {
+  source = "../../modules/k8s/bootstrap"
+
+  providers = {
+    kubectl    = kubectl.eu-central
+    kubernetes = kubernetes.eu-central
+    helm       = helm.eu-central
+  }
+
+  environment    = local.environment
+  network_region = "eu-central"
+  cluster_name   = module.eu-central-cluster.kubeconfig_data.cluster_name
+}
