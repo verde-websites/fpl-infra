@@ -6,7 +6,7 @@ applicationsets:
     generators:
       - git:
           repoURL: https://github.com/verde-websites/fpl-infra.git
-          revision: cluster-secrets
+          revision: HEAD
           directories:
             - path: "kubernetes/clusters/staging/**/*"
             - path: "kubernetes/clusters/staging/.*/**"
@@ -18,7 +18,7 @@ applicationsets:
         project: default
         source:
           repoURL: https://github.com/verde-websites/fpl-infra.git
-          targetRevision: cluster-secrets
+          targetRevision: HEAD
           path: "{{.path.path}}"
           kustomize:
             namespace: "{{index .path.segments 3}}"

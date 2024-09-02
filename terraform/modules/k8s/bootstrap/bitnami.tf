@@ -14,8 +14,8 @@ resource "kubernetes_secret" "sealed-secrets-key" {
   }
 
   data = {
-    "tls.crt" = file("keys/sealed-secrets-key.crt")
-    "tls.key" = file("keys/sealed-secrets-key.key")
+    "tls.crt" = file("${path.module}/keys/sealed-secrets.crt")
+    "tls.key" = file("${path.module}/keys/sealed-secrets.key")
   }
 
   type = "kubernetes.io/tls"
