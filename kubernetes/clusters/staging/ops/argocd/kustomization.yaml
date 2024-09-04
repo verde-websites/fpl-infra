@@ -3,6 +3,9 @@ kind: Kustomization
 
 namespace: ops
 
+resources:
+  - resources/sealed-secrets.yaml
+
 helmCharts:
   - name: argo-cd
     version: 7.4.5
