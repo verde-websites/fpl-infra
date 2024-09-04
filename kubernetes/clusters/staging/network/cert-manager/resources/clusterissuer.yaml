@@ -15,4 +15,4 @@ spec:
           cloudflare:
             apiTokenSecretRef:
               name: cert-manager
-              key: ciAjnRii1RkzSLQY1iLVR0AqUqWi9PmoC3EykTeC
+              key: CLOUDFLARE_API_TOKEN

@@ -42,3 +42,4 @@ backend.tf
 
 # kube-hetzner outputs
 *_kubeconfig.yaml
+secrets.yaml

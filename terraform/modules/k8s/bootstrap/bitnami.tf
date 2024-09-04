@@ -1,16 +1,10 @@
 /* --------------------------------- Sealed Secrets ------------------------ */
 
-resource "kubernetes_namespace" "sealed-secrets-ns" {
-  metadata {
-    name = "sealed-secrets"
-  }
-}
-
 resource "kubernetes_secret" "sealed-secrets-key" {
-  depends_on = [kubernetes_namespace.sealed-secrets-ns]
+  depends_on = [kubernetes_namespace.ops]
   metadata {
     name      = "sealed-secrets-key"
-    namespace = "sealed-secrets"
+    namespace = "ops"
   }
 
   data = {
@@ -25,6 +19,6 @@ resource "helm_release" "sealed-secrets" {
   depends_on = [kubernetes_secret.sealed-secrets-key]
   name       = "sealed-secrets"
   chart      = "sealed-secrets"
-  namespace  = "sealed-secrets"
+  namespace  = "ops"
   repository = "https://bitnami-labs.github.io/sealed-secrets"
 }
