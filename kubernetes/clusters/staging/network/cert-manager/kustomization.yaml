@@ -3,6 +3,8 @@ kind: Kustomization
 
 resources:
   - resources/clusterissuer.yaml
+  - resources/sealed-secrets.yaml
+
 helmCharts:
   - repo: https://charts.jetstack.io
     name: cert-manager
