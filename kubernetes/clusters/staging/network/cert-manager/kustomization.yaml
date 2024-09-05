@@ -10,7 +10,7 @@ helmCharts:
     valuesFile: values.yaml
     namespace: network
 
-resources:
-  - resources/sealed-secrets.yaml
-  - resources/clusterissuer.yaml
+#resources:
+  #- resources/sealed-secrets.yaml
+  #- resources/clusterissuer.yaml
 
