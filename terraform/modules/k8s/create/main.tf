@@ -46,7 +46,9 @@ module "kube-hetzner" {
 
   # updates disabled as not using HA control plane
   automatically_upgrade_os = false
-
+  extra_kustomize_deployment_commands = <<-EOT
+    kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.14.1/cert-manager.crds.yaml"
+  EOT
   # etcd snapshot backups
  # etcd_s3_backup = {
  #   etcd-s3-bucket     = "${var.environment}-k3s-etcd-snapshots"
