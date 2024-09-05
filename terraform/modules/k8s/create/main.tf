@@ -25,7 +25,7 @@ module "kube-hetzner" {
   load_balancer_location = "fsn1"
   ingress_controller      = "none"
   enable_wireguard        = true
-  enable_klipper_metal_lb = "false"
+  enable_klipper_metal_lb = "true"
   dns_servers = [
     "1.1.1.1",
     "8.8.8.8",
