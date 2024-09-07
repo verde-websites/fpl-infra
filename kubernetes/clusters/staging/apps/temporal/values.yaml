@@ -1,0 +1,27 @@
+server:
+  replicaCount: 1
+
+cassandra:
+  config:
+    cluster_size: 1
+
+elasticsearch:
+  replicas: 1
+
+prometheus:
+  enabled: true
+
+grafana:
+  enabled: true
+
+#server:
+  #ingress:
+    #enabled: true
+    #ingressClassName: nginx-private
+    #annotations:
+      #cert-manager.io/cluster-issuer: dilfpl
+      #nginx.ingress.kubernetes.io/backend-protocol: HTTPS
+    #extraTls:
+      #- secretName: temporal-staging.dilfpl.com
+        #hosts:
+          #- temporal-staging.dilfpl.com
