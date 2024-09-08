@@ -55,7 +55,7 @@ module "eu-central-cluster" {
   server_nodepools = [
     {
       name        = "fsn1-server",
-      server_type = "cpx21",
+      server_type = "cpx31",
       location    = "fsn1",
       count       = 1
     },

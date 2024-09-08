@@ -1,5 +1,15 @@
 server:
   replicaCount: 1
+  ingress:
+    enabled: true
+    ingressClassName: nginx-private
+    annotations:
+      cert-manager.io/cluster-issuer: dilfpl
+      nginx.ingress.kubernetes.io/backend-protocol: HTTPS
+    extraTls:
+      - secretName: argocd-staging.dilfpl.com
+        hosts:
+          - argocd-staging.dilfpl.com
 
 cassandra:
   config:
