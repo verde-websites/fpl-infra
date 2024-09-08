@@ -21,9 +21,7 @@ module "kube-hetzner" {
   network_region          = var.network_region
   /* TODO: Might need to disable cert manager for ingress */
   enable_cert_manager     = false
-  load_balancer_type     = "lb11"
-  load_balancer_location = "fsn1"
-  ingress_controller      = "none"
+  # ingress_controller      = "none"
   enable_wireguard        = true
   enable_klipper_metal_lb = "true"
   dns_servers = [
