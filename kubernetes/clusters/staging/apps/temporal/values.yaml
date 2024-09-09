@@ -7,9 +7,9 @@ server:
       cert-manager.io/cluster-issuer: dilfpl
       nginx.ingress.kubernetes.io/backend-protocol: HTTPS
     extraTls:
-      - secretName: argocd-staging.dilfpl.com
+      - secretName: temporal-staging.dilfpl.com
         hosts:
-          - argocd-staging.dilfpl.com
+          - temporal-staging.dilfpl.com
 
 cassandra:
   config:
