@@ -3,6 +3,9 @@ kind: Kustomization
 
 namespace: ops
 
+resources:
+  - ../../base
+
 helmCharts:
   - name: argocd-apps
     version: 2.0.0
