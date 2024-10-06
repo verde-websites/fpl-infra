@@ -5,7 +5,8 @@ kind: Kustomization
 namespace: ops
 
 resources:
-  - resources/sealed-secrets.yaml
+  - ../../base
+#  - resources/sealed-secrets.yaml
 
 helmCharts:
   - name: argo-cd
