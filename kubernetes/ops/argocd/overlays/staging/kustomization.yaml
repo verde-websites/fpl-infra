@@ -5,7 +5,7 @@ kind: Kustomization
 namespace: ops
 
 resources:
-  - ../../base
+  #- ../../base
   - ../../base/resources/sealed-secrets.yaml
   #- ../resources/sealed-secrets.yaml
 
