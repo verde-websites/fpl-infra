@@ -2,11 +2,11 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
-#namespace: ops
+namespace: ops
 
 resources:
-  - ../../base
-#  - resources/sealed-secrets.yaml
+#  - ../../base
+  - resources/sealed-secrets.yaml
 
 helmCharts:
   - name: argo-cd
