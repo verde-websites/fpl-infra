@@ -1,0 +1,12 @@
+web:
+  ingress:
+    enabled: true
+    ingressClassName: nginx-private
+    annotations:
+      cert-manager.io/cluster-issuer: dilfpl
+      nginx.ingress.kubernetes.io/backend-protocol: HTTPS
+      nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    extraTls:
+      - secretName: temporal-staging.dilfpl.com
+        hosts:
+          - temporal-staging.dilfpl.com
