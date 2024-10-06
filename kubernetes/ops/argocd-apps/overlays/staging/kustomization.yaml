@@ -1,8 +1,21 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
-resources:
-  - ../../base
+namespace: ops
 
-helmGlobals:
-  valuesFile: values.yaml
+helmCharts:
+  - name: argocd-apps
+    version: 2.0.0
+    releaseName: argocd-apps
+    repo: https://argoproj.github.io/argo-helm
+    valuesFile: values.yaml
+    namespace: ops
+#    
+#apiVersion: kustomize.config.k8s.io/v1beta1
+#kind: Kustomization
+#
+#resources:
+#  - ../../base
+#
+#helmGlobals:
+#  valuesFile: values.yaml
