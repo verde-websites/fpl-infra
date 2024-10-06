@@ -1,37 +1,37 @@
-applicationsets:
-  main:
-    name: main
-    goTemplate: true
-    goTemplateOptions: ["missingkey=error"]
-    generators:
-      - git:
-          repoURL: https://github.com/verde-websites/fpl-infra.git
-          revision: HEAD
-          directories:
-            - path: "kubernetes/*/*/base"
-            - path: "kubernetes/.*/**"
-              exclude: true
-    template:
-      metadata:
-        name: "{{index .path.segments 2}}"  # App name and environment
-      spec:
-        project: default
-        source:
-          repoURL: https://github.com/verde-websites/fpl-infra.git
-          targetRevision: HEAD
-          path: "kubernetes/{{index .path.segments 1}}/{{index .path.segments 2}}/base"
-          kustomize:
-            namespace: "{{index .path.segments 1}}"  # Namespace is the first directory
-        destination:
-          server: https://kubernetes.default.svc
-          namespace: "{{index .path.segments 1}}"  # Namespace is the first directory
-        syncPolicy:
-          automated:
-            selfHeal: true
-            prune: true
-          syncOptions:
-            - CreateNamespace=true
-            - FailOnSharedResource=true
+#applicationsets:
+#  main:
+#    name: main
+#    goTemplate: true
+#    goTemplateOptions: ["missingkey=error"]
+#    generators:
+#      - git:
+#          repoURL: https://github.com/verde-websites/fpl-infra.git
+#          revision: HEAD
+#          directories:
+#            - path: "kubernetes/*/*/base"
+#            - path: "kubernetes/.*/**"
+#              exclude: true
+#    template:
+#      metadata:
+#        name: "{{index .path.segments 2}}"  # App name and environment
+#      spec:
+#        project: default
+#        source:
+#          repoURL: https://github.com/verde-websites/fpl-infra.git
+#          targetRevision: HEAD
+#          path: "kubernetes/{{index .path.segments 1}}/{{index .path.segments 2}}/base"
+#          kustomize:
+#            namespace: "{{index .path.segments 1}}"  # Namespace is the first directory
+#        destination:
+#          server: https://kubernetes.default.svc
+#          namespace: "{{index .path.segments 1}}"  # Namespace is the first directory
+#        syncPolicy:
+#          automated:
+#            selfHeal: true
+#            prune: true
+#          syncOptions:
+#            - CreateNamespace=true
+#            - FailOnSharedResource=true
     #template:
     #  metadata:
     #    name: "{{.path.basename}}"

@@ -8,7 +8,7 @@ resource "helm_release" "argocd" {
   namespace  = kubernetes_namespace.ops.metadata[0].name
   values = [
     //file("${path.module}/../../../../kubernetes/clusters/${var.cluster_name}/ops/argocd/values.yaml")
-    file("${path.module}/../../../../kubernetes/ops/argocd/base/values.yaml")
+    file("${path.module}/../../../../kubernetes/ops/argocd/overlays/${var.cluster_name}/values.yaml")
   ]
 }
 
@@ -20,7 +20,7 @@ resource "helm_release" "argocd-apps" {
   namespace  = kubernetes_namespace.ops.metadata[0].name
   values = [
     //file("${path.module}/../../../../kubernetes/clusters/${var.cluster_name}/ops/argocd-apps/values.yaml")
-    file("${path.module}/../../../../kubernetes/ops/argocd-apps/base/values.yaml")
+    file("${path.module}/../../../../kubernetes/ops/argocd-apps/overlays/${var.cluster_name}/values.yaml")
   ]
 
   depends_on = [
