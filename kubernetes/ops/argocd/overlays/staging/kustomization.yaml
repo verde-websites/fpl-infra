@@ -6,7 +6,8 @@ namespace: ops
 
 resources:
   - ../../base
-  - resources/sealed-secrets.yaml
+  - ../../base/resources
+  #- ../resources/sealed-secrets.yaml
 
 helmCharts:
   - name: argo-cd
