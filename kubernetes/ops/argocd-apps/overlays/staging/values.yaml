@@ -8,7 +8,7 @@ applicationsets:
           repoURL: https://github.com/verde-websites/fpl-infra.git
           revision: HEAD
           directories:
-            - path: "kubernetes/*/*/overlays/staging"
+            - path: "kubernetes/*/*/base"
             - path: "kubernetes/.*/**"
               exclude: true
     template:
@@ -19,7 +19,7 @@ applicationsets:
         source:
           repoURL: https://github.com/verde-websites/fpl-infra.git
           targetRevision: HEAD
-          path: "kubernetes/{{index .path.segments 1}}/{{index .path.segments 2}}/overlays/staging"
+          path: "kubernetes/{{index .path.segments 1}}/{{index .path.segments 2}}/base"
           kustomize:
             namespace: "{{index .path.segments 1}}"  # Namespace is the first directory
         destination:
