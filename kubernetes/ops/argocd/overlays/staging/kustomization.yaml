@@ -5,7 +5,7 @@ kind: Kustomization
 namespace: ops
 
 resources:
-#  - ../../base
+  - ../../base
   - resources/sealed-secrets.yaml
 
 helmCharts:
