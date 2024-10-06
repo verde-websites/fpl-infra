@@ -5,5 +5,10 @@ kind: Kustomization
 resources:
   - ../../base
 
-helmGlobals:
-  valuesFile: values.yaml
+helmCharts:
+  - name: reflector
+    version: 7.1.288
+    releaseName: reflector
+    repo: https://emberstack.github.io/helm-charts
+    valuesFile: values.yaml
+    namespace: ops

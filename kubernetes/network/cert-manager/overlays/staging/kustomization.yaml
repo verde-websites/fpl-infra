@@ -2,7 +2,33 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 resources:
-  - ../../base
+  - https://github.com/cert-manager/cert-manager/releases/download/v1.15.3/cert-manager.crds.yaml
+  - resources/sealed-secrets.yaml
+  - resources/clusterissuer.yaml
 
-helmGlobals:
-  valuesFile: values.yaml
+helmCharts:
+  - repo: https://charts.jetstack.io
+    name: cert-manager
+    version: v1.15.3
+    includeCRDs: true
+    releaseName: cert-manager
+    valuesFile: values.yaml
+    namespace: network
+
+#apiVersion: kustomize.config.k8s.io/v1beta1
+#kind: Kustomization
+#
+#resources:
+#  - ../../base
+#
+#helmCharts:
+#  - repo: https://charts.jetstack.io
+#    name: cert-manager
+#    version: v1.15.3
+#    includeCRDs: true
+#    releaseName: cert-manager
+#    valuesFile: values.yaml
+#    namespace: network
+#
+#helmGlobals:
+#  valuesFile: values.yaml

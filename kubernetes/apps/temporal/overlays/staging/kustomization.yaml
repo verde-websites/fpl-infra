@@ -4,5 +4,13 @@ kind: Kustomization
 resources:
   - ../../base
 
-helmGlobals:
-  valuesFile: values.yaml
+helmCharts:
+  - name: temporal
+    version: 0.44.0
+    releaseName: temporal
+    repo: https://go.temporal.io/helm-charts
+    valuesFile: values.yaml
+    namespace: apps
+
+#helmGlobals:
+  #valuesFile: values.yaml
