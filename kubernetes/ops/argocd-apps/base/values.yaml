@@ -8,24 +8,23 @@ applicationsets:
           repoURL: https://github.com/verde-websites/fpl-infra.git
           revision: HEAD
           directories:
-            - path: "kubernetes/clusters/staging/**/*"
-            - path: "kubernetes/apps/*/overlays/staging"
-            - path: "kubernetes/clusters/staging/.*/**"
+            - path: "kubernetes/*/*/base"
+            - path: "kubernetes/.*/**"
               exclude: true
     template:
       metadata:
-        name: "{{.path.basename}}"
+        name: "{{index .path.segments 2}}"  # App name and environment
       spec:
         project: default
         source:
           repoURL: https://github.com/verde-websites/fpl-infra.git
           targetRevision: HEAD
-          path: "{{.path.path}}"
+          path: "kubernetes/{{index .path.segments 1}}/{{index .path.segments 2}}/base"
           kustomize:
-            namespace: "{{index .path.segments 3}}"
+            namespace: "{{index .path.segments 1}}"  # Namespace is the first directory
         destination:
-          name: in-cluster
-          namespace: "{{index .path.segments 3}}"
+          server: https://kubernetes.default.svc
+          namespace: "{{index .path.segments 1}}"  # Namespace is the first directory
         syncPolicy:
           automated:
             selfHeal: true
@@ -33,3 +32,24 @@ applicationsets:
           syncOptions:
             - CreateNamespace=true
             - FailOnSharedResource=true
+    #template:
+    #  metadata:
+    #    name: "{{.path.basename}}"
+    #  spec:
+    #    project: default
+    #    source:
+    #      repoURL: https://github.com/verde-websites/fpl-infra.git
+    #      targetRevision: HEAD
+    #      path: "{{.path.path}}"
+    #      kustomize:
+    #        namespace: "{{index .path.segments 3}}"
+    #    destination:
+    #      name: in-cluster
+    #      namespace: "{{index .path.segments 3}}"
+    #    syncPolicy:
+    #      automated:
+    #        selfHeal: true
+    #        prune: true
+    #      syncOptions:
+    #        - CreateNamespace=true
+    #        - FailOnSharedResource=true
