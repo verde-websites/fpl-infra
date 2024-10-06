@@ -8,5 +8,5 @@ helmCharts:
     version: 2.0.0
     releaseName: argocd-apps
     repo: https://argoproj.github.io/argo-helm
-    #valuesFile: values.yaml
+    valuesFile: values.yaml
     namespace: ops
