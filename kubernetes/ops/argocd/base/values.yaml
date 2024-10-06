@@ -1,0 +1,20 @@
+configs:
+  cm:
+    kustomize.buildOptions: --enable-helm
+
+global:
+  domain: argocd-staging.dilfpl.com
+  imagePullSecrets:
+    - name: argocd-registry
+
+server:
+  ingress:
+    enabled: true
+    ingressClassName: nginx-private
+    annotations:
+      cert-manager.io/cluster-issuer: dilfpl
+      nginx.ingress.kubernetes.io/backend-protocol: HTTPS
+    extraTls:
+      - secretName: argocd-staging.dilfpl.com
+        hosts:
+          - argocd-staging.dilfpl.com
