@@ -8,8 +8,8 @@ cassandra:
 elasticsearch:
   replicas: 1
 
-prometheus:
-  enabled: true
-
-grafana:
-  enabled: true
+#prometheus:
+#  enabled: true
+#
+#grafana:
+#  enabled: true
