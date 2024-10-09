@@ -24,17 +24,17 @@ spec:
             valueFrom:
               secretKeyRef:
                 name: database-url
-                key: DATABASE_URL
+                key: databaseDsn
           - name: TEMPORAL_HOST_URL
             valueFrom:
               secretKeyRef:
                 name: temporal-host-url
-                key: TEMPORAL_HOST_URL
+                key: temporalHostUrl
           - name: TEMPORAL_NAMESPACE
             valueFrom:
               secretKeyRef:
                 name: temporal-namespace
-                key: TEMPORAL_NAMESPACE
+                key: temporalNamespace
         ports:
         - containerPort: 8080
       imagePullSecrets:
