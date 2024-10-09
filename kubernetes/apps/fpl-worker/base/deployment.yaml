@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fpl-worker
+  namespace: apps # Replace with your desired namespace
+  labels:
+    app: fpl-worker
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: fpl-worker
+  template:
+    metadata:
+      labels:
+        app: fpl-worker
+    spec:
+      containers:
+      - name: fpl-worker
+        image: ghcr.io/verde-websites/fpl-worker/fpl-worker:latest
+        imagePullPolicy: IfNotPresent
+        env:
+          - name: DATABASE_URL
+            valueFrom:
+              secretKeyRef:
+                name: database-url
+                key: DATABASE_URL
+          - name: TEMPORAL_HOST_URL
+            valueFrom:
+              secretKeyRef:
+                name: temporal-host-url
+                key: TEMPORAL_HOST_URL
+          - name: TEMPORAL_NAMESPACE
+            valueFrom:
+              secretKeyRef:
+                name: temporal-namespace
+                key: TEMPORAL_NAMESPACE
+        ports:
+        - containerPort: 8080
+      imagePullSecrets:
+      - name: github-registry-secret # Ensure you have the correct secret configured for pulling from GitHub registry
