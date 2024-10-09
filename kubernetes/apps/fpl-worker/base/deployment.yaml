@@ -18,7 +18,7 @@ spec:
       containers:
       - name: fpl-worker
         image: ghcr.io/verde-websites/fpl-worker/fpl-worker:latest
-        imagePullPolicy: IfNotPresent
+        imagePullPolicy: Always #TODO: Change to IfNotPresent
         env:
           - name: DATABASE_URL
             valueFrom:
