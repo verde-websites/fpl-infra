@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: myfpl-api
+  namespace: apps
+  annotations:
+    cert-manager.io/cluster-issuer: dilfpl
+    nginx.ingress.kubernetes.io/backend-protocol: HTTP
+spec:
+  ingressClassName: nginx-private
+  tls:
+    - hosts:
+        - myfpl-api-staging.dilfpl.com
+      secretName: myfpl-api-staging.dilfpl.com
+  rules:
+    - host: myfpl-api-staging.dilfpl.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: myfpl-api
+                port:
+                  number: 8000 

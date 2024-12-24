@@ -1,0 +1,12 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: myfpl-api
+  namespace: apps
+spec:
+  tls:
+    - hosts:
+        - myfpl-api-staging.dilfpl.com
+      secretName: myfpl-api-staging.dilfpl.com
+  rules:
+    - host: myfpl-api-staging.dilfpl.com 
