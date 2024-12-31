@@ -68,6 +68,24 @@ module "eu-central-cluster" {
       count       = 0 # no agents
     },
   ]
+  extra_firewall_rules = [
+    {
+      description = "For Railway Database"
+      direction = "out"
+      protocol = "tcp"
+      port = "20650"
+      source_ips = []
+      destination_ips = ["0.0.0.0/0"]
+    },
+    {
+      description = "For Tidb Database"
+      direction = "out"
+      protocol = "tcp"
+      port = "4000"
+      source_ips = []
+      destination_ips = ["0.0.0.0/0"]
+    }
+  ]
 }
 
 /* -------------------------------- bootstrap ------------------------------- */

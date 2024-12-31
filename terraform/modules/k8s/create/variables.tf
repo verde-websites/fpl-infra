@@ -141,3 +141,15 @@ variable "agent_nodepools" {
     error_message = "Names in agent_nodepools must be unique"
   }
 }
+
+variable "extra_firewall_rules" {
+  description = "Extra firewall rules"
+  type = list(object({
+    description = string
+    direction = string
+    protocol = string
+    port = string
+    source_ips = list(string)
+    destination_ips = list(string)
+  }))
+}
