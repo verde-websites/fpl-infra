@@ -3,22 +3,6 @@ apiVersion: bitnami.com/v1alpha1
 kind: SealedSecret
 metadata:
   creationTimestamp: null
-  name: github-registry-secret
-  namespace: apps
-spec:
-  encryptedData:
-    .dockerconfigjson: AgA6zYsNMwzz9qOCC3vKcALaYUDeh4NK35AJ//gxA6wKAj7GnzOjqjGFggxSeLY6ung3j26XOVOBfN3IZrLZ3QYAUdKCbFRfgBXJGMVCdchCJ0D2Dvw2KMjIWw8deNms2nG4zJ/n0XQPYrHB1CB3sK2bPWRqIeOfwGyx/332GDAH/kMZixk+1KSJGG3LMlaOiBfnH8s81hixeZle2qaeomoUz7DHLH7RNhlEh8L535CR5FHM4hLikIzfqtWQawVdSqOLivOh8SRF5MRiSGVFKzwudLbjBvbP4r13MmnHkJ4dO2IEvWqVV9zuj3NR2KxkRYfun6OduhZ/2wt9f292sImJo/GSeVTU5XuC62iY7CHfXLE9R56JsOPA5vMwdwUY7Cvjjlj93sZHuo02sN9RnmNqdrDjhuVBSW8CVMOrj1cEJthipwrbTEI0hUh2sLqbKTRbmj4FVCD++mQjk3PHdLLH1pNi2AUFP1DjodD4hHSY+zpvKTv+JNjzSWN8cvZ8zRMBVYB3sW6N7OiObecEUUTwFXDHzliV+BXr7Vj6ETnWRNfDfZGXhw3kHxL/UAMv3kD2tVUaTxDnIao0Rui9qlTl3NxmiH13Po6m3zUuof7XCgVwYcBaFu2k0D8UqCmjSQCU+jMnwGwC/qDx1SYGAXRJXFCQT6LqGR+Ff4TQTbJoeZZdBHWQoRRutlpxkoqf0OTqnwgp0t4iNyZPJsn82ADr4Oaoj02KzlzGIGJnuNiF/g5hjbP04qKkUmsLMvXEpkUB5mtuNJdw+NNh/B7f7x+30IO/68ULAsqfdmjPzbRPTVbSKQEjGbIGcp9aDVQMh+XmBph0nrELopLV3PZea+kvaAF2rnAPLIhNTd9CEiHSRZUtBiEtbOcCpmTkWOn8ha62tNYXnmI3rjti2vxX4d6xz499tDmta3KHN4gcj23S/K9ua28M8z9CSDMPivZK2my/z17v6uANexQEPBFG8AC+ZkXK0w==
-  template:
-    metadata:
-      creationTimestamp: null
-      name: github-registry-secret
-      namespace: apps
-    type: kubernetes.io/dockerconfigjson
----
-apiVersion: bitnami.com/v1alpha1
-kind: SealedSecret
-metadata:
-  creationTimestamp: null
   name: dilfpl-infra-repo
   namespace: ops
 spec:
