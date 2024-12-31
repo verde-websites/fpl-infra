@@ -19,3 +19,19 @@ spec:
         argocd.argoproj.io/secret-type: repository
       name: dilfpl-infra-repo
       namespace: ops
+---
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  creationTimestamp: null
+  name: github-registry-secret
+  namespace: apps
+spec:
+  encryptedData:
+    .dockerconfigjson: AgAJIP+uCzuV8aveNsFSEdnNWPUWmT9Lk2ryr8+qM98lIHDZ3ah3m3Runmstce3te16o/N4Ugk1raqVByE2U0bVpZVbZbzu8itnGmvvYG3N1r3h573QtU4dWxTPgjmXLFyvhdDY0xAUWxfyDrdsgn+B5Gx8Qelv5vw1EcT40ymMEAF63W5qm1KH1tLWZ9vpy3QmjufysRP4Bhd72D5gtpXa9+ofLdfnou/Dpxfo7g/cMrgFJzNrxsrhCJfkO5j5z9iXl+vtWGJzOt5fBbDwSQQ7nr8K61RQXqp3h/k4vVzrQ+ewCEgMAmAQ4M/IGmedSC5rQywBsOncVR2QVL0754DCIbZAed678SxjP9g7nkTWL0q6imNfWZVA4OdI0CulKS+LZKfej+aKZu0J51mj0M8dlIWkyvdILPd1MNcsH2mTyrXrGLQHCpow8F8Opwfq7kISFS9O8WV36KmxbUIcIM6J1wUa1jAOINk3bsfVsh8XMNCVpq6zfxamP3oyYzxB3/0n7vQu25yp5E8Xw2NWse2qhzNWGI4XxmE9M11ZKlZhnjGQxAycZnTsERswk/arCPkoEjs+SeXH4YpRWeB+OiTlhWjxTr123gYyAjKrHsVUJB0Z0kFF5WgA2hNdfxGivgYX1eJmJZq2IaaHWVf7iSv9Vmq2bQW3VI0v+OpDwF/Meky2YU+56H9CG3fdBI1XCcKdQyZQDYyCBUI5sHnnmtSppLzMaL2IjsZd8l6x12atDYDsfAGqqH3H59NJh56Dhz7d70rNbnUb0zVXzR0iuXhUPuVcIySAqWO3/vi9p1HyqOQUWn+opAIAMY/G+PV06Qx9hkRAo8poyZigIpbkwb22ZBkX6PN0DiC8X1d++odxXHcuFW0Yg6kM1TcHkMsdIVOipH2DGMbs4OkvuojBEM3mlx12W+ZFt/xr0X20Pu7LiY586G06hRFYGTofFgVvjzzZfG6unKc8bkPP+3cXI9zR2cb9UcQ==
+  template:
+    metadata:
+      creationTimestamp: null
+      name: github-registry-secret
+      namespace: apps
+    type: kubernetes.io/dockerconfigjson
