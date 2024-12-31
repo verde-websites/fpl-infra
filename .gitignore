@@ -43,3 +43,6 @@ backend.tf
 # kube-hetzner outputs
 *_kubeconfig.yaml
 secrets.yaml
+cert-manager-secrets.yaml
+temporal-secrets.yaml
+myfpl-secrets.yaml
