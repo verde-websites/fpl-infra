@@ -5,6 +5,9 @@ resource "kubernetes_secret" "sealed-secrets-key" {
   metadata {
     name      = "sealed-secrets-key"
     namespace = "ops"
+    labels = {
+      "sealedsecrets.bitnami.com/sealed-secrets-key" = "active"
+    }
   }
 
   data = {
