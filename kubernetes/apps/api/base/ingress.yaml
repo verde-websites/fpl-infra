@@ -20,6 +20,6 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: myfpl-api
+                name: api
                 port:
                   number: 80 
