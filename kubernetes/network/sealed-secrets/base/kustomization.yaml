@@ -1,0 +1,6 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+# The base might be empty if all secrets are environment-specific,
+# or it might contain some shared SealedSecrets that don't differ by environment.
+resources: []

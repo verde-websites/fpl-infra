@@ -2,10 +2,9 @@
 apiVersion: bitnami.com/v1alpha1
 kind: SealedSecret
 metadata:
-  annotations:
-    sealedsecrets.bitnami.com/cluster-wide: "true"
   creationTimestamp: null
   name: dilfpl-infra-repo
+  namespace: ops
 spec:
   encryptedData:
     githubAppID: AgAu0eE8h0eKSOrXmMHZySjYyVaGBNRlDGI2uSWTiMLwGmwh50OaHcSI3EfjA9goHfKT6iS/Jy3pZYIX0EGFxJMSW9G4xx0pLwMrmHoWvNdqxcw7EEi2XNz7dtq6quxGug0C1sIlhGzpETS+Eb3Bm0UQffvGy9UJ5Yy9bi4YQY2v1k/Rtgij1amYuSbzpSC33Wk+TK6oAhHaJQTIA9gDfCdglCHOZNk6Og+BimrI8IjnW8bl1ixu2UAwZhHvk2avfgoPIzwO7ATYcBg4PSOn0sczXjTweVOXA9z4L2Uugf0B8WpunoEU5P3k3L32nPpZ8BYg3vlhEUmg+9vSzGLHtFwm7WdG6QASnbfl5sBwA3Zw8mRGRxoEcRfimfeCYWeXMwhLzU5EhHyYu5fTvcW3In4Cq+4cKrU+Hy3TRqqXS7C0EcRMr3BozXtHGJF9VJluy7kYhw9AYHhd1Nz9f/M0pcgSJeIYe1HAV3gnlt019HCl91Kffg9e6zFhcTMS5X0I8sIRdXxkmmYwateCWXlT5Lgl2GAsQ/ixfIRcYbdSBd01V4K/EkqTV6imdwzsBHs2O0G+r7t6WpnN3jnT2esI9Zjq0FYH5aLtzGfmPimxT6y6mynGhJGGJ5p9kwGBdCoI7EbubMli60tYyhomm3yI5qZi302W/jnHqj0MbzRWu5KvooAnG/u2Gpiqfe7wQ73KD3kohrMhquk=
@@ -15,112 +14,8 @@ spec:
     url: AgAPrZ9cDVsLbTeNTC2kDUBHpAoSLSTg353EBBKPXmKT8saHO7yPWzPXK1zDDPKn9mGBFAp70bWd37yfgRWnjeS2LXuLaVLAOX2/X+hWT4N4RzGKqGTkvOkmKrpxKwuW0bShB3/QrFZSccfFwKUvG6fp8OziZuupiuerKE2M2xEPjkJrra+mO1KOQ1guaL5Gtb8G9zrwp8wbFgjGSGtZN2jVn3WHYdKijxoOtgqDvIcGZcfqSxIYOiAQul9YVdhfPTWrwIoXD0V0Hf8ZyuvQ3OUIf5yNjDZQkYy99WwqhM7uTLvhiiqarmITvkMKpXYJRs7vRJSH4bfI7vT9EOq8V2jO9PbyIxxldgQ7VquZ1Ra+sldLSd1jZJn35mwmGk7y7jtr1Qg65RlRm8/Er8DMDw/xcltPiX81i51xGQc8CwdrQT5B8kZnW4rRRdsNQlcUUU3N2kwmWZnRjrZ76faRc3ZMyVtSLnTSfnx5bBn1v26kujmuEFejmCFb7amvYWQx0xL8qytlmWHh6f0kkFzIxQUAztqCfpq9iANMw900y0OBRpwM060x/VFlu6GZOWxZFEMkPN19XdgHT3Ed0mhte8ugZM2mrOIDgisXMZTQh8JjQYkLZplNGZGtDMF0qjFKcoseDtoatm9Ky5bn5I3zJYsE9kHsIlFRAdA06GlLpokll/+cazyszPGjgDTzIQSYQ7Znj/FBcgRVjipqXLDhJgd0/AIS3BpesOPBgoUM7+MxtmBhKo31VAIwJwOxBBvgRg==
   template:
     metadata:
-      annotations:
-        sealedsecrets.bitnami.com/cluster-wide: "true"
       creationTimestamp: null
       labels:
         argocd.argoproj.io/secret-type: repository
       name: dilfpl-infra-repo
----
-apiVersion: bitnami.com/v1alpha1
-kind: SealedSecret
-metadata:
-  annotations:
-    sealedsecrets.bitnami.com/cluster-wide: "true"
-  creationTimestamp: null
-  name: github-registry-secret
-spec:
-  encryptedData:
-    .dockerconfigjson: AgAkMNLAWg/Q1QYX3uVoYr6QtuLq4HmhseOH8MqdzeX8SW3h30JQ7i0Ujhg/atqlsa7wr2u+bZFTHeJdVP5nKvmDv/NmdrqKxvYuVp4MLK8JZj9u93gW+j3hPJP348UXy2L17JUbP6LUUVbmE8g9Q7A9Vr3e50lcQfkCtS61S4knTTJKVWcnIRMt+WRd72Wmi9bcPqfEmeIABMRmBvfxk6p/QMFaAo0M7TK8cn99Yrt+duMqixDCOM5jsuEoIfxJuWOpuOAO/TjJgr56U7kftiplq99eQ6NnOrodXhNVdgW6XdTOFedCMfSRPmwAYvE84V00TQVlQp181zo/Lg+Qk5tkr9Tl+gELAwx9auY6bUK62j0qR+mT5VKZfToUJkufI4ZBOyzsQo+cuskj5pmxUwPcOcJ5AucI+8D3J3mgtuXHUasBic6ahSu0/Sl9owdQ1vSK4KZQXJ2BUWQ54n3mQdfwX7yDzKUbPFIsxjWH5szhxEt7QXrGeqVHHHmYpe4qFsvHFTWoFFQp087WHtzemQf0MkYMDZgqtU8Sm9vegetgGPdzTorEUkW111m6gOZlSbY3+1DFmqsse9rh6x3RxsyL5XUW6ZW2diqX3PFUayMSDNGeruYY71pDih+V4cGuaHErhHA5aaw/3NRCSHvJjZKwxBGuLvQgyw1LF3bCRPMCMh5YQ0irMd9l8yOw9k/xA5MJ0s42Qyi8vVoBYX6M8TBbSnidnrDBvYNPW2KYQ61r11r0QCMhq59dGqxU19qUAqSHRZTS58dkNQpQj24gnGDQPmz9RXvpz87JqTiBWVmXi7ds0qkb/5H9M5zVBpD0upukF11+I6LqUnRkerbHnIZqsn0W1nQEbbV481tdkt7p9pYtAFarH6k2xEFm8M8O01IJGeLqucvHOuPXpahTv2riTwz9fselBZvC6At7uEZ1qJ/+lchX7XU6YBhcReHyO53oYuNpQjuYlPaJyQ1MZ+8RHkodzg==
-  template:
-    metadata:
-      annotations:
-        sealedsecrets.bitnami.com/cluster-wide: "true"
-      creationTimestamp: null
-      name: github-registry-secret
-    type: kubernetes.io/dockerconfigjson
----
-apiVersion: bitnami.com/v1alpha1
-kind: SealedSecret
-metadata:
-  annotations:
-    sealedsecrets.bitnami.com/cluster-wide: "true"
-  creationTimestamp: null
-  name: cert-manager
-spec:
-  encryptedData:
-    CLOUDFLARE_TOKEN: AgBTq8w+i+aCmAj4XPEUPknJBJLPXoNy6c9LKEDkkknT/8a4CojGwECumgP7y5Xdkwj8rmi6Oni6QlcyUh9FHMgFk1NA8+f1nugWfNssommQesymtI/PThDR7e7mjNS4HCGAXJtYItkEmKGZoIGUamo9x6stNZrvtSgTY7pDccQ2Qil8PDoppMGp//n6WkIYNbIQWuHL21SnGG0wWWiSNqqC3WuWCJR8EnLa42TTqJcEjPRFJudhqIARbf6qgWTP59Lzdt42BMWg6gsvWPuui+M2YNt57x5Y1OT0v/Yj89P13XNqbXmUBk+vd5wtpjkdkoBXAr9ZwvRg16xZRKYheSw7vtHtkbPDvBrMciiSAlyGwKtTwpMJCTFAnTlL/kx209iLHfexf57nmKuSdGXjvsmJwDwHFs3K24tbY1UZfMYokb3iL9MFqK+XveHHUi75nEBLwCn3q3JXTZw7sj5KWmGH2HaYfWi3DAJjBnpuecufRjdxGjrZr0SFh/oSupm12r45Bs2ybPBzT7GgkajrxKgBVjEYvfxg6XWqjw8PuM1f/4Ur4z5A8qqalX/3B9oh+9selk/UtbU6eLrDgMXvJaFXTynY5MyhOzjWo0BGRyTEGudJvl31ue1/BuQXlfmQbXt5u0qqeaodMmOuAnvAQ0SRtngRDD+AlJpVCBwyI1qM9V/SFuVTr+aNnoD83nf8T6UltOdwEz2xSzYA2KJZlq+U8JFVeuL6OlrxoqUyAHDVrWTuzeicGeS3
-  template:
-    metadata:
-      annotations:
-        sealedsecrets.bitnami.com/cluster-wide: "true"
-      creationTimestamp: null
-      name: cert-manager
----
-apiVersion: bitnami.com/v1alpha1
-kind: SealedSecret
-metadata:
-  annotations:
-    sealedsecrets.bitnami.com/cluster-wide: "true"
-  creationTimestamp: null
-  name: db-url
-spec:
-  encryptedData:
-    databaseDsn: AgA/XwPqIBIR/QLXVD247k5/jnM1C5i5eBK7oCuoL5o4ku06oEt2oTar1uqv9idw5z/mPtfDAI1ScBcEXMZJsYWqeBFq29nFIS1p+eLugPHF8lVw/CqIPwj+xaWuranU/ro+RjYUWA5IJLvCLUmWjEkbEiteVeFYhKkVdnzoOPSVinxCRhNix150OLwZNun2cR9l4zxK1bcjUlPNWIlIwy+5VqavoOXZNFlkT64Oh9sYiIx4ZVtWeaBqiU2tZ5hQczx04/YLD/ZYPP/RdM6gPfLTeB4ul6iMf6f/fX9gMov+Bh/24/qACzELbeOq7m5a4pzoeLKQe8pCNdNnbqWRhIXzEeBmAv9TGluoRQ9bn/FPbb+utHWLj9f33/7xNPX/a0V8YzqWc1u6Ei7kvFa2/9ddWWJiZlzcjPvW9b+wUUNZvmjd1SYJENCQIlbwREZzXEPB17e6DalMKj8TbODg7dNAW0TxTYuUIxv0T0jWGA4ClmNyEn7X2cvmrRyz4Rf4ePBqr1hdx0Pi0F08acCQXTh9L44xosJ8GX1L1B9ZAvmzl29n5JUxmT1ye7tjh8SLx25goZxSqQLI/5VSRFqQRzU0FL4I8wcDUa4O1Sgv1vbtjCzgOrxUzZGhpJeZ9EEkfnw44FVVFphDETRU8otmxzFMDW/ZBGOs0PEXG/ndiMfzgaKSpISKEG9Ftl3SQekh7wuYM0u6dRICCN8GZtXvOTC8ClAiNXbdshqe616+HnQ/pqRndmwVXDMaY+UhW5EoMtjdoDzly+PfsNgp+CdMpIzhIP86iTrxP400aRSm50DtV+93F2Gg5RedZyunHw==
-  template:
-    metadata:
-      annotations:
-        sealedsecrets.bitnami.com/cluster-wide: "true"
-      creationTimestamp: null
-      name: db-url
----
-apiVersion: bitnami.com/v1alpha1
-kind: SealedSecret
-metadata:
-  annotations:
-    sealedsecrets.bitnami.com/cluster-wide: "true"
-  creationTimestamp: null
-  name: database-url
-spec:
-  encryptedData:
-    databaseDsn: AgAMG/3NoLvfeN9iBqXoYMLjogLbLgKJxjT9VEHK5/k1BMEAAiUPLmAhUg0k3wpWLkt5KYvf1nL7Z+VOLjUZnN3xzdTJTAxnRvWTSDR7nVC+yyXDEs0lwt3TQUPBR+rqZuAhMOm/c0fNkzW6oWhiE1vmDGLf2Eo+TjUnp1KdUTmhjFs+/vBQZv37leMoSsng3vv+qVA9biuEW5mLEZE+YrlBd8XitCJF5X/MuQYGlxZrQS7ReYGODJN2jNzga9syE4rOLEPp1WrprIysxuiMYnJpZZQ5AjP7TEMMX/9/Vm03XfcdMwNvxOMUJWMYljSE+H2hXdwZByYZQtBCsCccNqaJJcqvKNyzSbU2mzt4AFF2kBnCwCkC37dB9zAvqW1fcTm9CyqFnGchewtcecDBkfQO/8z+Z38sz0ujtwqaEmBMGGC4JqB5pECYMczX1TygHB4SE4N7lDKFBSaGs2/HLFvwNEJAeEAUywHRI0XRB+KalaK6rAP21fXdJP8HoHFJHrPySvsxNnc+Qdp51Qgx9aUrqxFG/KoH4vJArDaKVmbP+F2P6+G/PkOZSvkOUxFsyhbzCTG+/kI6hzKuMKm7WytGIB7vKihkSl8bDUDVqaH/2quYwQbBIa+SmG/BrEfHsKwa1VvbiswVEPOSPL+Q0hC0NnXQVBxRBYg6Hw9M/eXRy6IcUH7FGpnkzrKnDIL+rHR/vc+543luTiuxgi51amDATpKxunICUnKeq4H/n2PKHlHco26LsgH9VaLvdv3KErhMzbfdW6rc4Vt67tXZuGBK4jQDR2z+bkUfAZG5V+UkVEBALvzfM3zZUk+uE81Log2CEEGjIcD7QwF5Cg==
-  template:
-    metadata:
-      annotations:
-        sealedsecrets.bitnami.com/cluster-wide: "true"
-      creationTimestamp: null
-      name: database-url
----
-apiVersion: bitnami.com/v1alpha1
-kind: SealedSecret
-metadata:
-  annotations:
-    sealedsecrets.bitnami.com/cluster-wide: "true"
-  creationTimestamp: null
-  name: temporal-host-url
-spec:
-  encryptedData:
-    temporalHostUrl: AgAxNFv6ZdPQ7xL3eh0yHEhETIqi7Daa7hMUfSQ9XfLg9IgOzdbLhj8TX5cfnUFaSv6zPtXlxFAzgAlp1Lsg32ezW9e49HRD7NCGalmuvoi4gqpOX+zfZTxg5uaMzK61conzOLm9o5guzzTFBBN/G6Yny6RRsvbST6eCNrn0tujSOXSz+SPka2vJK2358v2NAMj6r6oKBkul+dAIUWHCwnPxWIW4/55hjzswXPguh85lnXzdKqutcSAYU+d58v/j+hS2Fl33zfXHam+IGKSMhkaAIQT9Op+4d0BFwjq9yenOxqkaPC9QJlOCJYQL55DREXWsB93HUFIKfUEQIAZFGE03EpHJn7ml4gGevvl878fBjcxL7ig6Wl+xrwTs6bz6ZyMeuOX29MaoKvtMV8H7jfIlBmYfFDalSybAb8WS6eJtkdB/ukvCV8O86AsGbM5R26FJ2L6JU+CX7g55IfmUiKF+3XDGcahn/ccvAZwYyvKsKOa3Xno1+ORmirk5eypV+Rvbb4LD/O9+wXouzyvixHXST2YLoPpxZT3DQ6npmLrzpBHUDvr0cQWoH1qMdqeCBXXrRx+R6KMZLrbyeMzE5qqEn1sA4YbmzS7dcKjkXbHG4PQUQGDbuSn1P1HN3POQvON2n6jw9Ts68hWiX5t8562LPZDVNJFlF9cwDGUfdhClUu81i4WIhaxRyt6sARxB66Ooa0TbIPO6XuxCwtBzfwvSvYWvzJjQ
-  template:
-    metadata:
-      annotations:
-        sealedsecrets.bitnami.com/cluster-wide: "true"
-      creationTimestamp: null
-      name: temporal-host-url
----
-apiVersion: bitnami.com/v1alpha1
-kind: SealedSecret
-metadata:
-  annotations:
-    sealedsecrets.bitnami.com/cluster-wide: "true"
-  creationTimestamp: null
-  name: temporal-namespace
-spec:
-  encryptedData:
-    temporalNamespace: AgAxt/oWFYvfXl/laNd9CQivGWdNxd/q1mRqGMvy42NpWg4YqZngo6VvAZ+Md7XY5lghEFqnddvc3bD3rytRGwRNhdvfmaINvtPIkmi/zuic8bKSsyNe6Oflw/dwql1d7fwGOuMGEVUXLk1UqS+3D8ptcUrsdB+cemz1BRyAccoFNWb7RgggSZViTDMVf1XbTmrIWYTiCqyJPdHcvlf7Q/XvGzZ7Fd3CBLil+N/4gyWw19chNrVwnYn92l0149oJ1vlbv2SZHKKRhzuPQsIIWL2GKS6ONz+ltTA55RwyWTw5iJk8rMV0IJYFHmlxIvM6ClzZ+bQTJUjhZpNNNp0UiSXyXFsR6O/JFILFMpNWkOcHsciezoVbojDvkCVaeZhlmK6LyeyJgi6WBiK+ofd0kEiEAIGbxTteAkq6eu31Dy/Xs+Gt/CR80DbtEAmEr005TEgC2oh7Nwks2jOShQmlw8AGyM6AfBznndb0YPDhMjFzII0qQwVufPGzPICVCbmx8jWJUYqBBMMg1lz1QBrQg29psmqP1TEN9V6AyZgb4j1V+sOTF0PffbOspQcbs/DGh6kEOlGjQVuLv0NIdT0HNcWUXmJCmtq5lUCrA9yhyyU17wgVTR8yIKNkeHcP3JIAmQpfCXVlgSM90PeEUp7mue5Cf/ej2PQxfpKF1kLVfXEHYnRffePkJf6gzZm8hp5BCIS2ZZ7ikajw
-  template:
-    metadata:
-      annotations:
-        sealedsecrets.bitnami.com/cluster-wide: "true"
-      creationTimestamp: null
-      name: temporal-namespace
+      namespace: ops
