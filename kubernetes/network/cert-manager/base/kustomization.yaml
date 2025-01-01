@@ -12,5 +12,4 @@ helmCharts:
 
 resources:
   #- https://github.com/cert-manager/cert-manager/releases/download/v1.15.3/cert-manager.crds.yaml
-  - resources/sealed-secrets.yaml
   - resources/clusterissuer.yaml

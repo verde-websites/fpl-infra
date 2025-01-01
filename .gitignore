@@ -47,3 +47,5 @@ cert-manager-secrets.yaml
 temporal-secrets.yaml
 myfpl-secrets.yaml
 github-registry-secrets.yaml
+secrets.yaml.back
+secrets.yaml
