@@ -18,7 +18,6 @@ resource "helm_release" "argocd-apps" {
   version    = "2.0.0"
   namespace  = kubernetes_namespace.ops.metadata[0].name
   values = [
-    file("${path.module}/../../kubernetes/argocd/application-sets/apps.yaml"),
     file("${path.module}/../../kubernetes/argocd/application-sets/network.yaml")
   ]
 

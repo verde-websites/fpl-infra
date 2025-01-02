@@ -20,6 +20,8 @@ spec:
         repoURL: https://github.com/verde-websites/fpl-infra.git
         targetRevision: HEAD
         path: "{{.path.path}}"
+      kustomize:
+        namespace: "network"
       destination:
         server: https://kubernetes.default.svc
         namespace: "network" # Shared namespace for cluster-wide resources
@@ -27,3 +29,6 @@ spec:
         automated:
           selfHeal: true
           prune: true
+        syncOptions:
+          - CreateNamespace=true
+          - FailOnSharedResource=true
