@@ -8,10 +8,10 @@ applicationsets:
           repoURL: https://github.com/verde-websites/fpl-infra.git
           revision: HEAD
           directories:
-            - path: "kubernetes/*/*/envs/staging"
-            - path: "kubernetes/.*/**"
+            - path: "kubernetes-old/*/*/envs/staging"
+            - path: "kubernetes-old/.*/**"
               exclude: true
-            - path: "kubernetes/argocd"
+            - path: "kubernetes-old/argocd"
               exclude: true
             - path: "kubernetes/appsets"
               exclude: true
