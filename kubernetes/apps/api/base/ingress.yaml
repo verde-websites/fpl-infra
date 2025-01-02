@@ -10,10 +10,10 @@ spec:
   ingressClassName: nginx-private
   tls:
     - hosts:
-        - staging.api.myfpl.live
-      secretName: staging-api-myfpl-live
+        - api.dilfpl.com
+      secretName: staging-api-myfpl
   rules:
-    - host: staging.api.myfpl.live
+    - host: api.dilfpl.com
       http:
         paths:
           - path: /
