@@ -4,16 +4,16 @@ metadata:
   name: myfpl-api-ingress
   namespace: apps
   annotations:
-    cert-manager.io/cluster-issuer: myfpl
+    cert-manager.io/cluster-issuer: dilfpl
     nginx.ingress.kubernetes.io/backend-protocol: HTTP
 spec:
   ingressClassName: nginx-private
   tls:
     - hosts:
-        - staging.api.myfpl.live
-      secretName: staging-api-myfpl-live
+        - myfpl-api-staging.dilfpl.com
+      secretName: myfpl-api-staging.dilfpl.com
   rules:
-    - host: staging.api.myfpl.live
+    - host: myfpl-api-staging.dilfpl.com
       http:
         paths:
           - path: /

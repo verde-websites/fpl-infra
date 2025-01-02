@@ -1,0 +1,18 @@
+---
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: myfpl
+spec:
+  acme:
+    email: letsencrypt@myfpl.com
+    server: https://acme-v02.api.letsencrypt.org/directory
+    preferredChain: ""
+    privateKeySecretRef:
+      name: myfpl-acme-key
+    solvers:
+      - dns01:
+          cloudflare:
+            apiTokenSecretRef:
+              name: cert-manager
+              key: CLOUDFLARE_TOKEN

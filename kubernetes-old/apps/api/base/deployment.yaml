@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api
+  namespace: apps # Replace with your desired namespace
+  labels:
+    app: api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: api
+  template:
+    metadata:
+      labels:
+        app: api
+    spec:
+      containers:
+      - name: api
+        image: ghcr.io/verde-websites/myfpl-api/myfpl-api:latest
+        imagePullPolicy: Always #TODO: Change to IfNotPresent
+        env:
+          - name: DATABASE_URL
+            valueFrom:
+              secretKeyRef:
+                name: db-url
+                key: databaseDsn
+        ports:
+        - containerPort: 8000
+      imagePullSecrets:
+      - name: github-registry-secret # Ensure you have the correct secret configured for pulling from GitHub registry

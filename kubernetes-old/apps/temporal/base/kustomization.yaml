@@ -9,5 +9,5 @@ helmCharts:
     version: 0.44.0
     releaseName: temporal
     repo: https://go.temporal.io/helm-charts
-    valuesFile: values.yaml
+    valuesFile: helm-values.yaml
     namespace: apps

@@ -1,0 +1,35 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: apps
+  namespace: ops
+spec:
+  goTemplate: true
+  generators:
+    - git:
+        repoURL: https://github.com/verde-websites/fpl-infra.git
+        revision: HEAD
+        directories:
+          - path: "kubernetes/apps/*/overlays/staging"
+          - path: "kubernetes/apps/*/overlays/production"
+  template:
+    metadata:
+      name: "{{index .path.segments 2}}-{{index .path.segments 4}}" # App name and environment
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/verde-websites/fpl-infra.git
+        targetRevision: HEAD
+        path: "{{.path.path}}"
+        kustomize:
+          namespace: "{{index .path.segments 4}}" # Dynamically set namespace
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: "{{index .path.segments 4}}" # Namespace (staging or production)
+      syncPolicy:
+        automated:
+          selfHeal: true
+          prune: true
+        syncOptions:
+          - CreateNamespace=true
+          - FailOnSharedResource=true
