@@ -1,0 +1,29 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: network
+  namespace: ops
+spec:
+  goTemplate: true
+  generators:
+    - git:
+        repoURL: https://github.com/verde-websites/fpl-infra.git
+        revision: HEAD
+        directories:
+          - path: "kubernetes/network/*"
+  template:
+    metadata:
+      name: "{{index .path.segments 2}}" # Use directory name as the application name
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/verde-websites/fpl-infra.git
+        targetRevision: HEAD
+        path: "{{.path.path}}"
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: "network" # Shared namespace for cluster-wide resources
+      syncPolicy:
+        automated:
+          selfHeal: true
+          prune: true

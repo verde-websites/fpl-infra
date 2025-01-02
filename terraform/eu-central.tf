@@ -34,7 +34,7 @@ provider "helm" {
 /* --------------------------------- cluster -------------------------------- */
 
 module "eu-central-cluster" {
-  source = "../../modules/k8s/create"
+  source = "./create"
 
   providers = {
     hcloud    = hcloud.eu-central
@@ -91,7 +91,7 @@ module "eu-central-cluster" {
 /* -------------------------------- bootstrap ------------------------------- */
 
 module "eu-central-bootstrap" {
-  source = "../../modules/k8s/bootstrap"
+  source = "./bootstrap"
 
   providers = {
     kubectl    = kubectl.eu-central

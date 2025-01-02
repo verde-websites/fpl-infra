@@ -1,0 +1,20 @@
+configs:
+  cm:
+    kustomize.buildOptions: --enable-helm
+
+global:
+  domain: argocd.myfpl.live
+  imagePullSecrets:
+    - name: argocd-registry
+
+server:
+  ingress:
+    enabled: true
+    ingressClassName: nginx-private
+    annotations:
+      cert-manager.io/cluster-issuer: myfpl
+      nginx.ingress.kubernetes.io/backend-protocol: HTTPS
+    extraTls:
+      - secretName: argocd-myfpl-live
+        hosts:
+          - argocd.myfpl.live
