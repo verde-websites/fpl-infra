@@ -1,5 +1,6 @@
+---
 applicationsets:
-  main:
+  network:
     name: network
     goTemplate: true
     goTemplateOptions: ["missingkey=error"]

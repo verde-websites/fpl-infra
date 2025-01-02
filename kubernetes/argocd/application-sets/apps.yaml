@@ -1,5 +1,5 @@
 applicationsets:
-  main:
+  apps:
     name: apps
     goTemplate: true
     goTemplateOptions: ["missingkey=error"]

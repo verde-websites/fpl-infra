@@ -3,7 +3,7 @@
 resource "kubernetes_secret" "sealed-secrets-key" {
   depends_on = [kubernetes_namespace.ops]
   metadata {
-    name      = "sealed-secrets-key"
+    name      = "myfpl-sealed-secrets-key"
     namespace = "ops"
     labels = {
       "sealedsecrets.bitnami.com/sealed-secrets-key" = "active"
