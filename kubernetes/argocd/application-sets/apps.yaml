@@ -6,10 +6,10 @@ applicationsets:
     generators:
       - git:
           repoURL: https://github.com/verde-websites/fpl-infra.git
-        revision: HEAD
-        directories:
-          - path: "kubernetes/apps/*/overlays/staging"
-          - path: "kubernetes/apps/*/overlays/production"
+          revision: HEAD
+          directories:
+            - path: "kubernetes/apps/*/overlays/staging"
+            - path: "kubernetes/apps/*/overlays/production"
     template:
       metadata:
         name: "{{index .path.segments 2}}-{{index .path.segments 4}}" # App name and environment
