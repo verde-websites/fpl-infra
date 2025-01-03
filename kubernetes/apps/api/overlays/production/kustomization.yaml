@@ -5,7 +5,7 @@ resources:
 - ../../base
 - sealed-secrets.yaml
 
-namespace: staging
+namespace: production
 
 images:
 - name: ghcr.io/verde-websites/myfpl-api

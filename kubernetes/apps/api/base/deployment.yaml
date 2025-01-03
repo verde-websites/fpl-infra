@@ -2,7 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: api
-  namespace: staging # Replace with your desired namespace
   labels:
     app: api
 spec:
@@ -17,7 +16,7 @@ spec:
     spec:
       containers:
       - name: api
-        image: ghcr.io/verde-websites/myfpl-api/myfpl-api:latest
+        image: ghcr.io/verde-websites/myfpl-api/myfpl-api
         imagePullPolicy: Always #TODO: Change to IfNotPresent
         env:
           - name: DATABASE_URL

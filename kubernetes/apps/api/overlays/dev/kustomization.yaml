@@ -5,11 +5,11 @@ resources:
 - ../../base
 - sealed-secrets.yaml
 
-namespace: staging
+namespace: dev
 
 images:
 - name: ghcr.io/verde-websites/myfpl-api
-  newTag: placeholder
+  newTag: latest
 
 patchesStrategicMerge:
 - patch-deployment.yaml
