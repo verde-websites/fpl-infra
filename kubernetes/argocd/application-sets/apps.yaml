@@ -8,25 +8,25 @@ applicationsets:
           repoURL: https://github.com/verde-websites/fpl-infra.git
           revision: HEAD
           directories:
-            - path: "kubernetes/apps/*/overlays/dev"
+            #- path: "kubernetes/apps/*/overlays/dev"
             - path: "kubernetes/apps/*/overlays/staging"
-            - path: "kubernetes/apps/*/overlays/production"
+            #- path: "kubernetes/apps/*/overlays/production"
     template:
       metadata:
         name: "{{index .path.segments 2}}-{{index .path.segments 4}}" # App name and environment
         annotations:
           argocd-image-updater.argoproj.io/image-list: |
-            {{index .path.segments 2}}=ghcr.io/verde-websites/{{index .path.segments 2}}/{{index .path.segments 2}}
-          argocd-image-updater.argoproj.io/{{index .path.segments 2}}.update-strategy: |
-            {{if eq (index .path.segments 4) "dev"}}latest{{else}}tag{{end}}
-          argocd-image-updater.argoproj.io/{{index .path.segments 2}}.tag: |
-            {{if eq (index .path.segments 4) "dev"}}latest{{else}}regex:^([a-f0-9]{7})${{end}}
+            myfpl-api=ghcr.io/verde-websites/myfpl-api/myfpl-api
+          argocd-image-updater.argoproj.io/myfpl-api.update-strategy: |
+            {{if eq (index .path.segments 4) "staging"}}latest{{else}}tag{{end}}
+          argocd-image-updater.argoproj.io/myfpl-api.tag: |
+            {{if eq (index .path.segments 4) "staging"}}latest{{else}}regex:^([a-f0-9]{7})${{end}}
       spec:
         project: default
         source:
           repoURL: https://github.com/verde-websites/fpl-infra.git
           targetRevision: |
-            {{if eq (index .path.segments 4) "dev"}}main{{else}}{{index .path.segments 4}}{{end}}
+            {{if eq (index .path.segments 4) "staging"}}main{{else}}{{index .path.segments 4}}{{end}}
           path: "{{.path.path}}"
           kustomize:
             namespace: "{{index .path.segments 4}}" # Dynamically set namespace
