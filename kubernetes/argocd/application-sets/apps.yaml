@@ -25,9 +25,9 @@ applicationsets:
         project: default
         source:
           repoURL: https://github.com/verde-websites/fpl-infra.git
-          targetRevision: main
-          #targetRevision: |
-            #{{if eq (index .path.segments 4) "staging"}}main{{else}}{{index .path.segments 4}}{{end}}
+          #targetRevision: main
+          targetRevision: |
+            {{if eq (index .path.segments 4) "staging"}}main{{else}}{{index .path.segments 4}}{{end}}
           path: "{{.path.path}}"
           kustomize:
             namespace: "{{index .path.segments 4}}" # Dynamically set namespace
