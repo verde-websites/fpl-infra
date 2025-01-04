@@ -14,6 +14,23 @@ applicationsets:
     template:
       metadata:
         name: "{{index .path.segments 2}}-{{index .path.segments 4}}" # App name and environment
+        annotations:
+          argocd-image-updater.argoproj.io/image-list: |
+            {{index .path.segments 2}}=ghcr.io/verde-websites/{{index .path.segments 2}}/{{index .path.segments 2}}
+          argocd-image-updater.argoproj.io/{{index .path.segments 2}}.update-strategy: |
+            {{- if eq (index .path.segments 4) "dev" -}}
+            digest
+            {{- else -}}
+            newest-build
+            {{- end -}}
+          argocd-image-updater.argoproj.io/{{index .path.segments 2}}.allow-tags: |
+            {{- if eq (index .path.segments 4) "dev" -}}
+            regex:^latest$
+            {{- else if eq (index .path.segments 4) "staging" -}}
+            regex:^staging-([a-f0-9]{7})$
+            {{- else if eq (index .path.segments 4) "production" -}}
+            regex:^production-([a-f0-9]{7})$
+            {{- end -}}
       spec:
         project: default
         source:
