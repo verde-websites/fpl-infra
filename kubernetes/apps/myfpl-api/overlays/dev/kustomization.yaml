@@ -7,10 +7,6 @@ resources:
 
 namespace: dev
 
-images:
-- name: ghcr.io/verde-websites/myfpl-api
-  newTag: latest
-
 patchesStrategicMerge:
 - patch-deployment.yaml
 - patch-ingress.yaml

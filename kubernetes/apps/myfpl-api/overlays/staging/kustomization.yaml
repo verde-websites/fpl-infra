@@ -7,10 +7,6 @@ resources:
 
 namespace: staging
 
-images:
-- name: ghcr.io/verde-websites/myfpl-api
-  newTag: placeholder
-
 patchesStrategicMerge:
 - patch-deployment.yaml
 - patch-ingress.yaml

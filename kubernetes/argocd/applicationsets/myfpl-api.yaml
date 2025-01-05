@@ -20,7 +20,7 @@ spec:
       name: "myfpl-api-{{index .path.segments 4}}" # App name and environment
       annotations:
         argocd-image-updater.argoproj.io/image-list: |
-          myfpl-api=ghcr.io/verde-websites/myfpl-api/myfpl-api
+          myfpl-api=ghcr.io/verde-websites/fpl-infra/myfpl-api
         argocd-image-updater.argoproj.io/myfpl-api.update-strategy: |
           {{- if eq (index .path.segments 4) "dev" -}}
           digest
