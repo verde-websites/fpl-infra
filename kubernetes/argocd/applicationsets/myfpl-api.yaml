@@ -19,6 +19,8 @@ spec:
     metadata:
       name: "myfpl-api-{{index .path.segments 4}}" # App name and environment
       annotations:
+        argocd-image-updater.argoproj.io/write-back-method: git
+        argocd-image-updater.argoproj.io/write-back-target: kustomization
         argocd-image-updater.argoproj.io/image-list: |
           myfpl-api=ghcr.io/verde-websites/fpl-infra/myfpl-api
         argocd-image-updater.argoproj.io/myfpl-api.update-strategy: |
