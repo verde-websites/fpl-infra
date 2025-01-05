@@ -1,0 +1,52 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: myfpl-api-appsets
+  namespace: ops
+spec:
+  generators:
+    - git:
+        repoURL: https://github.com/verde-websites/fpl-infra.git
+        revision: HEAD
+        directories:
+          - path: "kubernetes/apps/myfpl-api/overlays/dev"
+          - path: "kubernetes/apps/myfpl-api/overlays/staging"
+          - path: "kubernetes/apps/myfpl-api/overlays/production"
+  template:
+    metadata:
+      name: "myfpl-api-{{path.basename}}" # App name and environment
+      annotations:
+        argocd-image-updater.argoproj.io/image-list: |
+          myfpl-api=ghcr.io/verde-websites/myfpl-api/myfpl-api
+        argocd-image-updater.argoproj.io/myfpl-api.update-strategy: |
+          {{- if eq (path.basename) "dev" -}}
+          digest
+          {{- else -}}
+          newest-build
+          {{- end -}}
+        argocd-image-updater.argoproj.io/myfpl-api.allow-tags: |
+          {{- if eq (path.basename) "dev" -}}
+          regex:^latest$
+          {{- else if eq (path.basename) "staging" -}}
+          regex:^staging-([a-f0-9]{7})$
+          {{- else if eq (path.basename) "production" -}}
+          regex:^production-([a-f0-9]{7})$
+          {{- end -}}
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/verde-websites/fpl-infra.git
+        targetRevision: main
+        path: "{{path.path}}"
+        kustomize:
+          namespace: "{{path.basename}}" # Dynamically set namespace
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: "{{path.basename}}" # Namespace (dev, staging, production)
+      syncPolicy:
+        automated:
+          selfHeal: true
+          prune: true
+        syncOptions:
+          - CreateNamespace=true
+          - FailOnSharedResource=true

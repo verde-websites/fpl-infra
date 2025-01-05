@@ -17,11 +17,7 @@ resource "helm_release" "argocd-apps" {
   chart      = "argocd-apps"
   version    = "2.0.0"
   namespace  = kubernetes_namespace.ops.metadata[0].name
-  values = [
-    file("${path.module}/../../kubernetes/argocd/application-sets/network.yaml"),
-    file("${path.module}/../../kubernetes/argocd/application-sets/apps.yaml")
-  ]
-
+  values = []
   depends_on = [
     helm_release.argocd
   ]
@@ -33,4 +29,12 @@ resource "helm_release" "argocd-image-updater" {
   chart      = "argocd-image-updater"
   version    = "0.11.3"
   namespace  = kubernetes_namespace.ops.metadata[0].name
+}
+
+resource "kubernetes_manifest" "applicationset_manager" {
+  manifest = yamldecode(file("${path.module}/../../kubernetes/argocd/applicationsets-manager.yaml"))
+
+  depends_on = [
+    helm_release.argocd
+  ]
 }
