@@ -4,6 +4,9 @@ metadata:
   name: myfpl-api-appsets
   namespace: ops
 spec:
+  goTemplate: true
+  goTemplateOptions:
+    - missingkey=error
   generators:
     - git:
         repoURL: https://github.com/verde-websites/fpl-infra.git
