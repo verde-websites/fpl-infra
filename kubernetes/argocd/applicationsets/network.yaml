@@ -3,6 +3,8 @@ kind: ApplicationSet
 metadata:
   name: network
   namespace: ops
+  goTemplate: true
+  goTemplateOptions: ["missingkey=error"]
 spec:
   generators:
     - git:
@@ -12,13 +14,13 @@ spec:
           - path: "kubernetes/network/*"
   template:
     metadata:
-      name: "{{path.basename}}" # Use the directory name as the application name
+      name: "{{index .path.segments 2}}" # Use the directory name as the application name
     spec:
       project: default
       source:
         repoURL: https://github.com/verde-websites/fpl-infra.git
         targetRevision: HEAD
-        path: "{{path.path}}"
+        path: "{{.path.path}}"
         kustomize:
           namespace: "network"
       destination:
