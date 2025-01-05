@@ -3,8 +3,6 @@ kind: ApplicationSet
 metadata:
   name: network
   namespace: ops
-  goTemplate: true
-  goTemplateOptions: ["missingkey=error"]
 spec:
   generators:
     - git:
@@ -14,7 +12,7 @@ spec:
           - path: "kubernetes/network/*"
   template:
     metadata:
-      name: "{{.path.basename}}" # Use the directory name as the application name
+      name: "{{path.basename}}" # Use the directory name as the application name
     spec:
       project: default
       source:
@@ -22,10 +20,10 @@ spec:
         targetRevision: HEAD
         path: "{{path.path}}"
         kustomize:
-          namespace: "network"
+          namespace: network
       destination:
         server: https://kubernetes.default.svc
-        namespace: "network" # Shared namespace for cluster-wide resources
+        namespace: network
       syncPolicy:
         automated:
           selfHeal: true
