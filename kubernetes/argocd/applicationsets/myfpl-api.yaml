@@ -22,7 +22,11 @@ spec:
         argocd-image-updater.argoproj.io/write-back-method: git
         argocd-image-updater.argoproj.io/write-back-target: kustomization
         argocd-image-updater.argoproj.io/image-list: |
+          {{- if eq (index .path.segments 4) "dev" -}}
+          myfpl-api=ghcr.io/verde-websites/fpl-infra/myfpl-api:latest
+          {{- else -}}
           myfpl-api=ghcr.io/verde-websites/fpl-infra/myfpl-api
+          {{- end -}}
         argocd-image-updater.argoproj.io/myfpl-api.update-strategy: |
           {{- if eq (index .path.segments 4) "dev" -}}
           digest
@@ -30,9 +34,7 @@ spec:
           newest-build
           {{- end -}}
         argocd-image-updater.argoproj.io/myfpl-api.allow-tags: |
-          {{- if eq (index .path.segments 4) "dev" -}}
-          regexp:^latest$
-          {{- else if eq (index .path.segments 4) "staging" -}}
+          {{- if eq (index .path.segments 4) "staging" -}}
           regexp:^staging-([a-f0-9]{7})$
           {{- else if eq (index .path.segments 4) "production" -}}
           regexp:^production-([a-f0-9]{7})$
