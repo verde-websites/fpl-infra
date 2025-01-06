@@ -3,3 +3,5 @@ kind: Kustomization
 
 resources:
   - sealed-secrets.yaml
+  - github-repo-sealed-secret.yaml
+  - image-updater-configmap.yaml

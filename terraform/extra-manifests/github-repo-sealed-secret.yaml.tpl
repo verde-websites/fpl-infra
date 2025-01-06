@@ -1,0 +1,16 @@
+---
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  creationTimestamp: null
+  name: github-repo-secret
+  namespace: ops
+spec:
+  encryptedData:
+    .dockerconfigjson: AgBpY8xMydzrFouMk0fghcyW1yzDQfbMtL+EL2203MdM06iWO9CN6pp38HH5OBWdwCMpQFa8+CB/c2o5ZWnoG+zrPty/0fPjHs//ZBDRU1H9JQXlDQ77JPoRkdNWOx7HLTdO/3iAXA6QXa14FmiaiIL/hUxgibWqN/7wM11mtRTPF4ZuzwygwO/A/K5SSCtQhpAFUEcf5ScNr8VzVaYyYcXLybvKNHB/wTQExo+H3Y4JlqKo5rmy5fpfwh221NCafW4H0HaIglfX0Iyu9+2pxaR4+y7v85l72q9F32V0KFaQvYVzjFuOKlnkf8tCDMqkulnMUShQm6T3G2pZ354KP8Jsn7RJvY77XHS4F8RFU777ajb+v6L/QhvEvZET8kwDW1SUO40K6zHu97mZlTNb6EOVLizmLX16AgW6B8uLDgc2NF4K3rW2uVwNLj4BQHQoC28x/2KixjVwnNl/TCwY/+XijcmquyqoCwUPCeaW/9jqaiSqhr9m5oOBQMnuyksIGU1vHjlP8VAAyOj+oGNyzGVEd9a0+z5wNJ8BDVK2LS4RiVI5GLA2toc6UWTJchEmxzPDf33oCjn6BoaAT2FHCduLZTYd1njN9qUjG2kYGVfKb0oISbGRL3Ufoh+tyn1DWmdeZDBKCDePLfcRxMDnEVBpZuyGL2ktEcOVsK0v4JfTU82letQvxYUSxqg9YI72oVxkimmNkiUd7EpUHFoHK+DLelzQLcmXS9G+huMBvINpkvePCFwwF2zOMoyCR2UtdrGaSf3/lwJ4E+wRpD8NPZPsNKX6IDQiBK8oCbgu+tdbIVnb7z5JSRN4A4KtuKO4ErCwDxpSYtUfTorv87bv1h4mmFtpWiXIyIqo5GEQfcIYDta7togWMP+63hCxiOolrU34NL6P0rDzxQAeDC68UNL3z13TsLojvy2ymon+z3LB+Sj3uxc3R7OeH3NVGA==
+  template:
+    metadata:
+      creationTimestamp: null
+      name: github-repo-secret
+      namespace: ops
+    type: kubernetes.io/dockerconfigjson
