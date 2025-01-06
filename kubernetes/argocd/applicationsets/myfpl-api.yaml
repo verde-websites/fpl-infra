@@ -31,11 +31,11 @@ spec:
           {{- end -}}
         argocd-image-updater.argoproj.io/myfpl-api.allow-tags: |
           {{- if eq (index .path.segments 4) "dev" -}}
-          regex:^latest$
+          regexp:^latest$
           {{- else if eq (index .path.segments 4) "staging" -}}
-          regex:^staging-([a-f0-9]{7})$
+          regexp:^staging-([a-f0-9]{7})$
           {{- else if eq (index .path.segments 4) "production" -}}
-          regex:^production-([a-f0-9]{7})$
+          regexp:^production-([a-f0-9]{7})$
           {{- end -}}
     spec:
       project: default
