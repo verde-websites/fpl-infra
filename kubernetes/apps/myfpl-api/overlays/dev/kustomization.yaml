@@ -9,4 +9,4 @@ patchesStrategicMerge:
 - patch-ingress.yaml
 images:
 - name: ghcr.io/verde-websites/fpl-infra/myfpl-api
-  digest: sha256:e83e2740e360ef4bea472a29037a1c432774d33516f274bf3dc2fc8be8300250
+  digest: sha256:2f9b80c66594789f26e22f8e6a95685107aaa9f9199bce06cf2da1c8030a562d
